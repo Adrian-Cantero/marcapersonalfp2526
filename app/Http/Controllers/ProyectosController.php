@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proyecto;
 use Illuminate\Http\Request;
 
 class ProyectosController extends Controller
@@ -9,13 +10,13 @@ class ProyectosController extends Controller
     public function getIndex()
     {
         return view('proyectos.index')
-            ->with('proyectos', self::$proyecto);
+            ->with('proyectos', Proyecto::all());
     }
 
     public function getShow($id)
     {
         return view('proyectos.show')
-            ->with('proyecto', self::$proyecto->id)
+            ->with('proyecto', Proyecto::findOrFail($id))
             ->with('id', $id);
     }
 
@@ -27,7 +28,7 @@ class ProyectosController extends Controller
     public function getEdit($id)
     {
         return view('proyectos.edit')
-            ->with('proyecto', self::$proyecto->id)
+            ->with('proyecto', Proyecto::findOrFail($id))
             ->with('id', $id);
     }
 

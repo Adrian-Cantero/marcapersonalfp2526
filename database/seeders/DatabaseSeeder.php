@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
 
         self::seedProyectos();
         $this->command->info('Tabla catálogo inicializada con datos!');
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
             $p->docente_id = $proyecto['docente_id'];
             $p->nombre = $proyecto['nombre'];
             $p->dominio = $proyecto['dominio'];
-            $p->metadatos = unserialize($proyecto['metadatos']);
+            $p->metadatos = serialize($proyecto['metadatos']);
             $p->save();
         }
     }
