@@ -14,6 +14,7 @@ class CicloResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $ciclo = parent::toArray($request);
+        return $ciclo;
     }
 }
